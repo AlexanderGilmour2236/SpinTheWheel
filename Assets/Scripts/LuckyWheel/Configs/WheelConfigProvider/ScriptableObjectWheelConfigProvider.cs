@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using SpinTheWheelTest.Configs;
 
 namespace LuckyWheel.Configs
@@ -6,10 +7,15 @@ namespace LuckyWheel.Configs
     public class ScriptableObjectWheelConfigProvider : IWheelConfigProvider
     {
         private readonly WheelOfLuckConfig _wheelOfLuckConfig;
+        private readonly Dictionary<string, LuckyWheelItemData> _idToItemData = new Dictionary<string, LuckyWheelItemData>();
 
         public ScriptableObjectWheelConfigProvider(WheelOfLuckConfig wheelOfLuckConfig)
         {
             _wheelOfLuckConfig = wheelOfLuckConfig;
+            foreach (LuckyWheelItemData luckyWheelItemData in _wheelOfLuckConfig.PossibleItemIDs)
+            {
+                _idToItemData[luckyWheelItemData.ItemID] = luckyWheelItemData;
+            }
         }
         
         public int GetSectorsOnWheelCount()
@@ -17,14 +23,14 @@ namespace LuckyWheel.Configs
             return _wheelOfLuckConfig.SectorsOnWheel;
         }
 
-        public int GetConsumableSectorsCount()
+        public LuckyWheelSpinData GetLuckyWheelSpinData()
         {
-            return _wheelOfLuckConfig.ConsumablesCount;
-        }
-
-        public int NonConsumableSectorsCount()
-        {
-            return _wheelOfLuckConfig.NonConsumablesCount;
+            return new LuckyWheelSpinData()
+            {
+                SectorsCount = _wheelOfLuckConfig.SectorsOnWheel,
+                ConsumablesCount = _wheelOfLuckConfig.ConsumablesCount,
+                NonConsumablesCount = _wheelOfLuckConfig.NonConsumablesCount
+            };
         }
 
         public LuckyWheelItemData[] GetPossibleConsumableItems()
@@ -40,6 +46,11 @@ namespace LuckyWheel.Configs
         public string[] FirstRollsItems()
         {
             return _wheelOfLuckConfig.FirstRollsItems;
+        }
+
+        public LuckyWheelItemData GetItemForID(string itemID)
+        {
+            return _idToItemData[itemID];
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Zenject;
 
-namespace SpinTheWheel.Services
+namespace SpinTheWheelTest.Services
 {
     public class WheelService : ITickable
     {

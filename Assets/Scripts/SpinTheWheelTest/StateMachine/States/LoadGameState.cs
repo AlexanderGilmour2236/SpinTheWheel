@@ -10,6 +10,7 @@ namespace SpinTheWheelTest.States
     {
         private readonly SpinTheWheelStateMachine _stateMachine;
         private IUIService _uiService;
+        private UIRoot _uiRoot;
 
         [Inject]
         public LoadGameState(SpinTheWheelStateMachine stateMachine, IUIService uiService)
@@ -27,13 +28,15 @@ namespace SpinTheWheelTest.States
 
         private void InitCanvas()
         {
-            UIRoot uiRoot = GameObject.FindObjectOfType<UIRoot>();
-            _uiService.SetUIRoot(uiRoot);
+            if (_uiRoot == null)
+            {
+                _uiRoot = Object.FindObjectOfType<UIRoot>();
+                _uiService.SetUIRoot(_uiRoot);   
+            }
         }
 
         public void Exit()
         {
-            
         }
     }
 }

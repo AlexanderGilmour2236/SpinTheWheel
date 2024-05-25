@@ -1,7 +1,7 @@
 ﻿using LuckyWheel.Services;
-using SpinTheWheel.Services;
-using SpinTheWheelTest.Factories;
 using SpinTheWheelTest.Services;
+using SpinTheWheelTest.Services.Player;
+using SpinTheWheelTest.Factories;
 using SpinTheWheelTest.States;
 using Zenject;
 
@@ -15,7 +15,6 @@ namespace SpinTheWheelTest
             InstallStates();
             InstallServices();
             InstallFactories();
-            InstallControllers();
         }
 
         private void InstallStateMachine()
@@ -35,17 +34,15 @@ namespace SpinTheWheelTest
         {
             Container.BindInterfacesAndSelfTo<UIService>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<WheelService>().AsSingle().NonLazy();
-            Container.BindInterfacesAndSelfTo<LuckyLuckyWheelService>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<LuckyWheelService>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<ConfigService>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<PlayerService>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<ItemsService>().AsSingle().NonLazy();
         }
 
         private void InstallFactories()
         {
             Container.BindInterfacesAndSelfTo<UIFactory>().AsSingle().NonLazy();
-        }
-
-        private void InstallControllers()
-        {
         }
     }
 }

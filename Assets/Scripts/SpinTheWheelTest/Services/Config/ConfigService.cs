@@ -1,9 +1,8 @@
 ﻿using SpinTheWheelTest.Configs;
 using SpinTheWheelTest.Factories;
 using UnityEngine;
-using Zenject;
 
-namespace SpinTheWheel.Services
+namespace SpinTheWheelTest.Services
 {
     public class ConfigService : IConfigService
     {

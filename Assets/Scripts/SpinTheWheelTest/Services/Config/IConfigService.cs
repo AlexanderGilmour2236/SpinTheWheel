@@ -1,6 +1,6 @@
 ﻿using SpinTheWheelTest.Configs;
 
-namespace SpinTheWheel.Services
+namespace SpinTheWheelTest.Services
 {
     public interface IConfigService
     {
