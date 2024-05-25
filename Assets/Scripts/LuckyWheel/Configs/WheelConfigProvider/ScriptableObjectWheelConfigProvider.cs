@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using LuckyWheel.Configs;
 using SpinTheWheelTest.Configs;
 
 namespace LuckyWheel.Configs

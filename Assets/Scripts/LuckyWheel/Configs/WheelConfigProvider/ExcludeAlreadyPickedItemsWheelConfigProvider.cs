@@ -42,7 +42,7 @@ namespace LuckyWheel.Configs
 
         public LuckyWheelItemData[] GetPossibleConsumableItems()
         {
-            return _wheelConfigProvider.GetPossibleConsumableItems().Where(item => ExcludedCheckMethod(item.ItemID))
+            return _wheelConfigProvider.GetPossibleConsumableItems().Where(item => !ExcludedCheckMethod(item.ItemID))
                 .ToArray();
         }
 

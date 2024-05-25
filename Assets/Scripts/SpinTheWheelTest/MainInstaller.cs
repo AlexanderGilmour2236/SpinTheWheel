@@ -1,9 +1,8 @@
-﻿using Main;
+﻿using LuckyWheel.Services;
 using SpinTheWheel.Services;
 using SpinTheWheelTest.Factories;
 using SpinTheWheelTest.Services;
 using SpinTheWheelTest.States;
-using UnityEngine;
 using Zenject;
 
 namespace SpinTheWheelTest
@@ -36,6 +35,8 @@ namespace SpinTheWheelTest
         {
             Container.BindInterfacesAndSelfTo<UIService>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<WheelService>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<LuckyLuckyWheelService>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<ConfigService>().AsSingle().NonLazy();
         }
 
         private void InstallFactories()

@@ -38,7 +38,8 @@ namespace LuckyWheel.Services
 
         private bool IsConfigValid(IWheelConfigProvider wheelConfigProvider)
         {
-            return wheelConfigProvider.GetConsumableSectorsCount() + wheelConfigProvider.NonConsumableSectorsCount()
+            return wheelConfigProvider != null &&
+                   wheelConfigProvider.GetConsumableSectorsCount() + wheelConfigProvider.NonConsumableSectorsCount()
                    <= wheelConfigProvider.GetSectorsOnWheelCount();
         }
 
