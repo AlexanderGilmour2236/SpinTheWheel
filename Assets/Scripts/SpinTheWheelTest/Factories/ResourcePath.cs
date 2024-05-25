@@ -4,5 +4,6 @@
     {
         public const string SpinTheWheelWindow = "UI/Windows/SpinTheWheelWindow";
         public const string LuckyWheelConfig = "Configs/LuckyWheelConfig";
+        public const string ItemsConfig = "Configs/ItemsConfig";
     }
 }

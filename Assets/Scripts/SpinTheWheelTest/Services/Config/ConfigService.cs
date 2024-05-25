@@ -7,7 +7,8 @@ namespace SpinTheWheelTest.Services
     public class ConfigService : IConfigService
     {
         public WheelOfLuckConfig LuckyWheelConfig { get; private set; }
-        
+        public ItemsConfig ItemsConfig { get; private set; }
+
         public ConfigService()
         {
             LoadConfigs();
@@ -16,6 +17,7 @@ namespace SpinTheWheelTest.Services
         private void LoadConfigs()
         {
             LuckyWheelConfig = Resources.Load<WheelOfLuckConfig>(ResourcePath.LuckyWheelConfig);
+            ItemsConfig = Resources.Load<ItemsConfig>(ResourcePath.ItemsConfig);
         }
     }
 }
