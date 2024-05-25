@@ -19,7 +19,25 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 07b455c15907f6749ae8e177787d8ff7, type: 2}
   - {fileID: 11400000, guid: 0eb7fa7e075fecd4d92ca910e641aa4b, type: 2}
   - {fileID: 11400000, guid: bde8955036364d94f99b35a94f932d11, type: 2}
-  <FirstRollsItems>k__BackingField: []
+  <PredefinedItemsConfigs>k__BackingField:
+  - <LuckyWheelItemData>k__BackingField:
+    - {fileID: 11400000, guid: 3a77e7fac6622ef4d9a78e8e9883ae5e, type: 2}
+    - {fileID: 11400000, guid: 3a77e7fac6622ef4d9a78e8e9883ae5e, type: 2}
+    - {fileID: 11400000, guid: 3a77e7fac6622ef4d9a78e8e9883ae5e, type: 2}
+    - {fileID: 11400000, guid: bde8955036364d94f99b35a94f932d11, type: 2}
+    - {fileID: 11400000, guid: 3a77e7fac6622ef4d9a78e8e9883ae5e, type: 2}
+    - {fileID: 11400000, guid: 3a77e7fac6622ef4d9a78e8e9883ae5e, type: 2}
+    <RewardItem>k__BackingField: {fileID: 11400000, guid: bde8955036364d94f99b35a94f932d11,
+      type: 2}
+  - <LuckyWheelItemData>k__BackingField:
+    - {fileID: 11400000, guid: b198dc72e4f81df4fa5e92321a69ec45, type: 2}
+    - {fileID: 11400000, guid: b198dc72e4f81df4fa5e92321a69ec45, type: 2}
+    - {fileID: 11400000, guid: b198dc72e4f81df4fa5e92321a69ec45, type: 2}
+    - {fileID: 11400000, guid: b198dc72e4f81df4fa5e92321a69ec45, type: 2}
+    - {fileID: 11400000, guid: b198dc72e4f81df4fa5e92321a69ec45, type: 2}
+    - {fileID: 11400000, guid: 0eb7fa7e075fecd4d92ca910e641aa4b, type: 2}
+    <RewardItem>k__BackingField: {fileID: 11400000, guid: 0eb7fa7e075fecd4d92ca910e641aa4b,
+      type: 2}
   <SectorsOnWheel>k__BackingField: 6
   <ConsumablesCount>k__BackingField: 4
   <NonConsumablesCount>k__BackingField: 2

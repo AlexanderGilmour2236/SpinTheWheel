@@ -17,11 +17,6 @@ namespace LuckyWheel.Configs
                 _idToItemData[luckyWheelItemData.ItemID] = luckyWheelItemData;
             }
         }
-        
-        public int GetSectorsOnWheelCount()
-        {
-            return _wheelOfLuckConfig.SectorsOnWheel;
-        }
 
         public LuckyWheelSpinData GetLuckyWheelSpinData()
         {
@@ -43,14 +38,9 @@ namespace LuckyWheel.Configs
             return _wheelOfLuckConfig.PossibleItemIDs.Where((item)=>!item.Consumable).ToArray();
         }
 
-        public string[] FirstRollsItems()
+        public PredefinedLuckyWheelConfig[] GetPredefinedLuckyWheelConfigs()
         {
-            return _wheelOfLuckConfig.FirstRollsItems;
-        }
-
-        public LuckyWheelItemData GetItemForID(string itemID)
-        {
-            return _idToItemData[itemID];
+            return _wheelOfLuckConfig.PredefinedItemsConfigs;
         }
     }
 }

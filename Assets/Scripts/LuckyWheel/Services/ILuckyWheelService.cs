@@ -10,5 +10,9 @@ namespace LuckyWheel.Services
         void SetWheelConfigProvider(IWheelConfigProvider wheelConfigProvider);
         List<LuckyWheelItemData> GetCurrentSpinPossibleItems();
         void TrySpin();
+        void SetCurrentSpinCount(int spinCount);
+        
+        public int CurrentSeed { get; }
+        public int CurrentSpinCount { get; }
     }
 }

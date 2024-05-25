@@ -47,14 +47,9 @@ namespace LuckyWheel.Configs
                 .ToArray();
         }
 
-        public string[] FirstRollsItems()
+        public PredefinedLuckyWheelConfig[] GetPredefinedLuckyWheelConfigs()
         {
-            return _basicWheelConfigProvider.FirstRollsItems();
-        }
-
-        public LuckyWheelItemData GetItemForID(string itemID)
-        {
-            return _basicWheelConfigProvider.GetItemForID(itemID);
+            return _basicWheelConfigProvider.GetPredefinedLuckyWheelConfigs();
         }
     }
 }

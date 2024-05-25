@@ -7,7 +7,7 @@ namespace SpinTheWheelTest.Configs
     public class WheelOfLuckConfig : ScriptableObject
     {
         [field:SerializeField] public LuckyWheelItemData[] PossibleItemIDs { get; set; }
-        [field:SerializeField] public string[] FirstRollsItems { get; set; }
+        [field:SerializeField] public PredefinedLuckyWheelConfig[] PredefinedItemsConfigs { get; set; }
         
         [field:SerializeField] public int SectorsOnWheel { get; set; }
         [field:SerializeField] public int ConsumablesCount { get; set; }

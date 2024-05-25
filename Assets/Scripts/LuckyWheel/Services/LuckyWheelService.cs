@@ -11,6 +11,7 @@ namespace LuckyWheel.Services
     {
         private IWheelConfigProvider _wheelConfigProvider;
         private int _currentSeed = 0;
+        private int _currentSpinCount = 0;
 
         public event Action<string> ItemRewarded;
         
@@ -19,9 +20,14 @@ namespace LuckyWheel.Services
             _wheelConfigProvider = wheelConfigProvider;
         }
 
+        public void SetCurrentSpinCount(int spinCount)
+        {
+            _currentSpinCount = spinCount;
+        }
+
         public List<LuckyWheelItemData> GetCurrentSpinPossibleItems()
         {
-            if (!IsConfigValid(_wheelConfigProvider))
+            if (!IsConfigValid(GetWheelConfigProvider()))
             {
                 throw new Exception("Config values are not valid");
             }
@@ -30,16 +36,16 @@ namespace LuckyWheel.Services
             
             List<LuckyWheelItemData> currentSpinItems = new List<LuckyWheelItemData>();
 
-            LuckyWheelSpinData luckyWheelSpinData = _wheelConfigProvider.GetLuckyWheelSpinData();
-            AddPossibleItems(currentSpinItems, _wheelConfigProvider.GetPossibleConsumableItems(), luckyWheelSpinData.ConsumablesCount);
-            AddPossibleItems(currentSpinItems, _wheelConfigProvider.GetPossibleNonConsumableItems(), luckyWheelSpinData.NonConsumablesCount);
+            LuckyWheelSpinData luckyWheelSpinData = GetWheelConfigProvider().GetLuckyWheelSpinData();
+            AddPossibleItems(currentSpinItems, GetWheelConfigProvider().GetPossibleConsumableItems(), luckyWheelSpinData.ConsumablesCount);
+            AddPossibleItems(currentSpinItems, GetWheelConfigProvider().GetPossibleNonConsumableItems(), luckyWheelSpinData.NonConsumablesCount);
 
             return currentSpinItems;
         }
 
         private bool IsConfigValid(IWheelConfigProvider wheelConfigProvider)
         {
-            LuckyWheelSpinData luckyWheelSpinData = _wheelConfigProvider.GetLuckyWheelSpinData();;
+            LuckyWheelSpinData luckyWheelSpinData = GetWheelConfigProvider().GetLuckyWheelSpinData();;
 
             return wheelConfigProvider != null &&
                    luckyWheelSpinData.ConsumablesCount + luckyWheelSpinData.NonConsumablesCount
@@ -75,11 +81,30 @@ namespace LuckyWheel.Services
         {
             string rewardedItemID = GetCurrentSpinItem();
             Debug.Log($"Rewarded with item: {rewardedItemID}");
+            
             _currentSeed++;
+            _currentSpinCount++;
+            
             ItemRewarded?.Invoke(rewardedItemID);
         }
 
         private string GetCurrentSpinItem()
+        {
+            if (IsCurrentSpinPredefined())
+            {
+                return GetPredefinedSpinRewardItem();
+            }
+
+            return GetSpinRewardItemBasedOnProbabilities();
+        }
+
+        private string GetPredefinedSpinRewardItem()
+        {
+            PredefinedLuckyWheelConfig[] predefinedLuckyWheelConfigs = _wheelConfigProvider.GetPredefinedLuckyWheelConfigs();
+            return predefinedLuckyWheelConfigs[_currentSpinCount].RewardItem.ItemID;
+        }
+
+        private string GetSpinRewardItemBasedOnProbabilities()
         {
             List<ObjectWithProbability<string>> itemsWithProbabilities = new List<ObjectWithProbability<string>>();
 
@@ -98,6 +123,34 @@ namespace LuckyWheel.Services
         private int GetCurrentSeed()
         {
             return _currentSeed;
+        }
+
+        private IWheelConfigProvider GetWheelConfigProvider()
+        {
+            PredefinedLuckyWheelConfig[] predefinedLuckyWheelConfigs = _wheelConfigProvider.GetPredefinedLuckyWheelConfigs();
+            
+            if (IsCurrentSpinPredefined())
+            {
+                return new PredefinedItemsWheelConfigProvider(predefinedLuckyWheelConfigs[_currentSpinCount]);
+            }
+
+            return _wheelConfigProvider;
+        }
+
+        private bool IsCurrentSpinPredefined()
+        {
+            PredefinedLuckyWheelConfig[] predefinedLuckyWheelConfigs = _wheelConfigProvider.GetPredefinedLuckyWheelConfigs();
+            return _currentSpinCount < predefinedLuckyWheelConfigs.Length;
+        }
+
+        public int CurrentSeed
+        {
+            get { return _currentSeed; }
+        }
+
+        public int CurrentSpinCount
+        {
+            get { return _currentSpinCount; }
         }
     }
 }

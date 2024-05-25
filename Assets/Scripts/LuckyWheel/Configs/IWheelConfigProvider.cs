@@ -6,8 +6,6 @@
 
         public LuckyWheelItemData[] GetPossibleConsumableItems();
         public LuckyWheelItemData[] GetPossibleNonConsumableItems();
-
-        public string[] FirstRollsItems();
-        LuckyWheelItemData GetItemForID(string itemID);
+        public PredefinedLuckyWheelConfig[] GetPredefinedLuckyWheelConfigs();
     }
 }
