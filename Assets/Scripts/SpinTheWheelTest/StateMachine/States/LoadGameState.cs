@@ -1,10 +1,10 @@
 ﻿using Main;
-using SpinTheWheel.Services;
-using SpinTheWheel.View;
+using SpinTheWheelTest.Services;
+using SpinTheWheelTest.View;
 using UnityEngine;
 using Zenject;
 
-namespace SpinTheWheel.States
+namespace SpinTheWheelTest.States
 {
     public class LoadGameState : IState
     {

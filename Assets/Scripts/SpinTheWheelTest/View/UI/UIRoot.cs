@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace SpinTheWheel.View
+namespace SpinTheWheelTest.View
 {
     public class UIRoot : MonoBehaviour
     {

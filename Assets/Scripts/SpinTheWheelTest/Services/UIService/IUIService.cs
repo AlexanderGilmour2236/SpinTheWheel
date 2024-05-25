@@ -1,7 +1,7 @@
-using SpinTheWheel.View;
-using WheelOfLuck.UI.Windows;
+using SpinTheWheelTest.UI.Windows;
+using SpinTheWheelTest.View;
 
-namespace SpinTheWheel.Services
+namespace SpinTheWheelTest.Services
 {
     public interface IUIService
     {

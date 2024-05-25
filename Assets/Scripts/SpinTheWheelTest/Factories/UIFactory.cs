@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using WheelOfLuck.UI.Windows;
+using SpinTheWheelTest.UI.Windows;
 
-namespace SpinTheWheel.Factories
+namespace SpinTheWheelTest.Factories
 {
     public interface IUIFactory
     {

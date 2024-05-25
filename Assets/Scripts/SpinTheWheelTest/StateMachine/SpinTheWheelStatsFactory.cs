@@ -4,7 +4,7 @@ using Main;
 using Zenject;
 using IState = Main.IState;
 
-namespace SpinTheWheel.States
+namespace SpinTheWheelTest.States
 {
     public class SpinTheWheelStatsFactory : StatesFactory
     {

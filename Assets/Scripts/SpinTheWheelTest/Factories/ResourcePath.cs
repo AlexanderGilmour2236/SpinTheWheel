@@ -1,4 +1,4 @@
-﻿namespace SpinTheWheel.Factories
+﻿namespace SpinTheWheelTest.Factories
 {
     public static class ResourcePath
     {

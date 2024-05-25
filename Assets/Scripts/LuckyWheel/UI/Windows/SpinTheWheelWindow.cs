@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace WheelOfLuck.UI.Windows
+namespace SpinTheWheelTest.UI.Windows
 {
     public class SpinTheWheelWindow : MonoBehaviour
     {

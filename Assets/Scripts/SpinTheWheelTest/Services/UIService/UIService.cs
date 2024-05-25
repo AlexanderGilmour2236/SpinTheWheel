@@ -1,8 +1,8 @@
-﻿using SpinTheWheel.Factories;
-using SpinTheWheel.View;
-using WheelOfLuck.UI.Windows;
+﻿using SpinTheWheelTest.Factories;
+using SpinTheWheelTest.View;
+using SpinTheWheelTest.UI.Windows;
 
-namespace SpinTheWheel.Services
+namespace SpinTheWheelTest.Services
 {
     public class UIService : IUIService
     {

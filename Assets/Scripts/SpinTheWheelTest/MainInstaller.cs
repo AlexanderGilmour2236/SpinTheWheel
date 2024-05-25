@@ -1,11 +1,12 @@
 ﻿using Main;
-using SpinTheWheel.Factories;
 using SpinTheWheel.Services;
-using SpinTheWheel.States;
+using SpinTheWheelTest.Factories;
+using SpinTheWheelTest.Services;
+using SpinTheWheelTest.States;
 using UnityEngine;
 using Zenject;
 
-namespace SpinTheWheel
+namespace SpinTheWheelTest
 {
     public class MainInstaller : MonoInstaller
     {

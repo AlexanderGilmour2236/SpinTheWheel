@@ -1,8 +1,8 @@
 ﻿using Main;
-using SpinTheWheel.Services;
+using SpinTheWheelTest.Services;
 using UnityEngine;
 
-namespace SpinTheWheel.States
+namespace SpinTheWheelTest.States
 {
     public class SpinWheelState : IState
     {

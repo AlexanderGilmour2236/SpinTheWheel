@@ -1,6 +1,6 @@
 ﻿using Main;
 
-namespace SpinTheWheel.States
+namespace SpinTheWheelTest.States
 {
     public class SpinTheWheelStateMachine : StateMachine, IMainStateMachine
     {

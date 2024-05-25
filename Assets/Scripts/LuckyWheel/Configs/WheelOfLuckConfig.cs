@@ -1,7 +1,7 @@
 ﻿using LuckyWheel.Configs;
 using UnityEngine;
 
-namespace SpinTheWheel.Configs
+namespace SpinTheWheelTest.Configs
 {
     [CreateAssetMenu(fileName = "WheelConfig", menuName = "Configs/WheelConfig")]
     public class WheelOfLuckConfig : ScriptableObject
