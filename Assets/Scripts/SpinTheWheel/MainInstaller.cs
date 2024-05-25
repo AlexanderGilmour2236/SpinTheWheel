@@ -1,4 +1,5 @@
 ﻿using Main;
+using SpinTheWheel.Factories;
 using SpinTheWheel.Services;
 using SpinTheWheel.States;
 using UnityEngine;
@@ -13,6 +14,7 @@ namespace SpinTheWheel
             InstallStateMachine();
             InstallStates();
             InstallServices();
+            InstallFactories();
             InstallControllers();
         }
 
@@ -31,7 +33,13 @@ namespace SpinTheWheel
 
         private void InstallServices()
         {
+            Container.BindInterfacesAndSelfTo<UIService>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<WheelService>().AsSingle().NonLazy();
+        }
+
+        private void InstallFactories()
+        {
+            Container.BindInterfacesAndSelfTo<UIFactory>().AsSingle().NonLazy();
         }
 
         private void InstallControllers()
