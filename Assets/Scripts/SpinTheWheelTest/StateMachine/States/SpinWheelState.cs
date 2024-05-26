@@ -33,21 +33,34 @@ namespace SpinTheWheelTest.States
         public void Enter()
         {
             Debug.Log("Spin Wheel State");
+            _playerService.PlayerCurrency = 200;
             
             InitWheelService();
             InitWindow();
             
             _luckyWheelService.ItemRewarded += OnSpinRewardedItem;
+            Debug.Log($"Player money: {_playerService.PlayerCurrency}");
         }
 
         private void OnSpinRewardedItem(string itemID)
         {
             _itemsService.ApplyItem(itemID);
+            Debug.Log($"Player money after spin: {_playerService.PlayerCurrency}");
         }
 
         private void InitWheelService()
         {
-            _luckyWheelService.SetWheelConfigProvider(GetWheelConfigProvider());
+            _luckyWheelService.Initialize(GetWheelConfigProvider(), HasEnoughCurrencyForSpin, ChargePlayerForSpin);
+        }
+
+        private bool HasEnoughCurrencyForSpin()
+        {
+            return _playerService.PlayerCurrency >= _configService.LuckyWheelConfig.SpinCost;
+        }
+
+        private void ChargePlayerForSpin()
+        {
+            _playerService.PlayerCurrency -= _configService.LuckyWheelConfig.SpinCost;
         }
 
         private IWheelConfigProvider GetWheelConfigProvider()

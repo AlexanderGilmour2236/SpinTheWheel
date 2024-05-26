@@ -12,5 +12,6 @@ namespace SpinTheWheelTest.Configs
         [field:SerializeField] public int SectorsOnWheel { get; set; }
         [field:SerializeField] public int ConsumablesCount { get; set; }
         [field:SerializeField] public int NonConsumablesCount { get; set; }
+        [field:SerializeField] public int SpinCost { get; set; } = 10;
     }
 }

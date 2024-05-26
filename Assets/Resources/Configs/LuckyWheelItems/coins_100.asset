@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: coins_100
   m_EditorClassIdentifier: 
   <ItemID>k__BackingField: coins_100
-  <Probability>k__BackingField: 20
+  <Probability>k__BackingField: 10
   <ProbabilityOnWheel>k__BackingField: 1
   <Consumable>k__BackingField: 1

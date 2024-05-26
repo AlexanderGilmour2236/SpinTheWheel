@@ -22,8 +22,7 @@ namespace SpinTheWheelTest.Services
 
         public void ApplyItem(CurrencyItemConfig itemConfig)
         {
-            // TODO: apply currency 
-            Debug.Log($"Added {itemConfig.Count} {itemConfig.CurrencyType} currency");
+            _playerService.PlayerCurrency += itemConfig.Count;
         }
 
         public void ApplyItem(UpgradeItemConfig itemConfig)

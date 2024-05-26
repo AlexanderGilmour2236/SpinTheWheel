@@ -13,16 +13,27 @@ namespace LuckyWheel.Services
         private int _currentSeed = 0;
         private int _currentSpinCount = 0;
 
+        private Func<bool> CanSpinCheckMethod = () => true;
+        private Action ChargePlayerAction = null;
+
         public event Action<string> ItemRewarded;
-        
-        public void SetWheelConfigProvider(IWheelConfigProvider wheelConfigProvider)
+
+        public void Initialize(IWheelConfigProvider wheelConfigProvider, Func<bool> canSpinMethod, Action chargePlayerAction)
         {
-            _wheelConfigProvider = wheelConfigProvider;
+            SetWheelConfigProvider(wheelConfigProvider);
+            CanSpinCheckMethod = canSpinMethod;
+            ChargePlayerAction = chargePlayerAction;
         }
+
 
         public void SetCurrentSpinCount(int spinCount)
         {
             _currentSpinCount = spinCount;
+        }
+
+        public void SetWheelConfigProvider(IWheelConfigProvider wheelConfigProvider)
+        {
+            _wheelConfigProvider = wheelConfigProvider;
         }
 
         public List<LuckyWheelItemData> GetCurrentSpinPossibleItems()
@@ -79,13 +90,35 @@ namespace LuckyWheel.Services
 
         public void TrySpin()
         {
-            string rewardedItemID = GetCurrentSpinItem();
-            Debug.Log($"Rewarded with item: {rewardedItemID}");
+            bool isFreeSpin = IsFreeSpin();
+            if (isFreeSpin || CanSpinCheckMethod())
+            {
+                string rewardedItemID = GetCurrentSpinItem();
             
-            _currentSeed++;
-            _currentSpinCount++;
+                _currentSeed++;
+                _currentSpinCount++;
             
-            ItemRewarded?.Invoke(rewardedItemID);
+                Debug.Log($"Rewarded with item: {rewardedItemID}");
+
+                if (!isFreeSpin)
+                {
+                    ChargePlayerAction?.Invoke();
+                }
+                else
+                {
+                    Debug.Log("Free spin!");
+                }
+                ItemRewarded?.Invoke(rewardedItemID);
+            }
+            else
+            {
+                Debug.Log("Cannot spin the wheel");
+            }
+        }
+
+        private bool IsFreeSpin()
+        {
+            return _currentSpinCount == 0;
         }
 
         private string GetCurrentSpinItem()

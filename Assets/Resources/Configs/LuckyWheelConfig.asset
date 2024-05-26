@@ -41,3 +41,4 @@ MonoBehaviour:
   <SectorsOnWheel>k__BackingField: 6
   <ConsumablesCount>k__BackingField: 4
   <NonConsumablesCount>k__BackingField: 2
+  <SpinCost>k__BackingField: 30

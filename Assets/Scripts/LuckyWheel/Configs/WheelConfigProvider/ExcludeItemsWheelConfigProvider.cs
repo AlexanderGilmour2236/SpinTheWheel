@@ -28,7 +28,7 @@ namespace LuckyWheel.Configs
                 consumablesCount = basicSpinData.SectorsCount - possibleNonConsumablesCount;
             }
             
-            return new LuckyWheelSpinData()
+            return new LuckyWheelSpinData
             {
                 SectorsCount = basicSpinData.SectorsCount,
                 ConsumablesCount = consumablesCount,
