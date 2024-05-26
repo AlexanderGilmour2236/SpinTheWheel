@@ -17,7 +17,7 @@ namespace SpinTheWheelTest.ViewModel
             _luckyWheelService = luckyWheelService;
         }
         
-        public List<LuckyWheelItemData> GetCurrentLuckyWheelsItems()
+        public List<ILuckyWheelItemData> GetCurrentLuckyWheelsItems()
         {
             return _luckyWheelService.GetCurrentSpinPossibleItems();
         }

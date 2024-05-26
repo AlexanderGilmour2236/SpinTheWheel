@@ -36,7 +36,7 @@ namespace LuckyWheel.Services
             _wheelConfigProvider = wheelConfigProvider;
         }
 
-        public List<LuckyWheelItemData> GetCurrentSpinPossibleItems()
+        public List<ILuckyWheelItemData> GetCurrentSpinPossibleItems()
         {
             if (!IsConfigValid(GetWheelConfigProvider()))
             {
@@ -45,7 +45,7 @@ namespace LuckyWheel.Services
             
             Random.InitState(GetCurrentSeed());
             
-            List<LuckyWheelItemData> currentSpinItems = new List<LuckyWheelItemData>();
+            List<ILuckyWheelItemData> currentSpinItems = new List<ILuckyWheelItemData>();
 
             LuckyWheelSpinData luckyWheelSpinData = GetWheelConfigProvider().GetLuckyWheelSpinData();
             AddPossibleItems(currentSpinItems, GetWheelConfigProvider().GetPossibleConsumableItems(), luckyWheelSpinData.ConsumablesCount);
@@ -63,23 +63,23 @@ namespace LuckyWheel.Services
                    <= wheelConfigProvider.GetLuckyWheelSpinData().SectorsCount;
         }
 
-        private void AddPossibleItems(List<LuckyWheelItemData> currentSpinItems, LuckyWheelItemData[] allPossibleItems, int itemsOnWheelCount)
+        private void AddPossibleItems(List<ILuckyWheelItemData> currentSpinItems, ILuckyWheelItemData[] allPossibleItems, int itemsOnWheelCount)
         {
-            List<ObjectWithProbability<LuckyWheelItemData>> itemsWithProbabilities = new List<ObjectWithProbability<LuckyWheelItemData>>();
+            List<ObjectWithProbability<ILuckyWheelItemData>> itemsWithProbabilities = new List<ObjectWithProbability<ILuckyWheelItemData>>();
 
             for (int i = 0; i < allPossibleItems.Length; i++)
             {
-                LuckyWheelItemData luckyWheelItemData = allPossibleItems[i];
+                ILuckyWheelItemData luckyWheelItemData = allPossibleItems[i];
                 
-                ObjectWithProbability<LuckyWheelItemData> itemWithProbability =
-                    new ObjectWithProbability<LuckyWheelItemData>(luckyWheelItemData, luckyWheelItemData.ProbabilityOnWheel);
+                ObjectWithProbability<ILuckyWheelItemData> itemWithProbability =
+                    new ObjectWithProbability<ILuckyWheelItemData>(luckyWheelItemData, luckyWheelItemData.ProbabilityOnWheel);
                 
                 itemsWithProbabilities.Add(itemWithProbability);
             }
             
             for (int i = 0; i < itemsOnWheelCount; i++)
             {
-                ObjectWithProbability<LuckyWheelItemData> item = RandomSelector.GetRandomObject(itemsWithProbabilities);
+                ObjectWithProbability<ILuckyWheelItemData> item = RandomSelector.GetRandomObject(itemsWithProbabilities);
                 currentSpinItems.Add(item.Object);
                 if (!item.Object.Consumable)
                 {
@@ -141,8 +141,8 @@ namespace LuckyWheel.Services
         {
             List<ObjectWithProbability<string>> itemsWithProbabilities = new List<ObjectWithProbability<string>>();
 
-            List<LuckyWheelItemData> currentSpinPossibleItems = GetCurrentSpinPossibleItems();
-            foreach (LuckyWheelItemData possibleItem in currentSpinPossibleItems)
+            List<ILuckyWheelItemData> currentSpinPossibleItems = GetCurrentSpinPossibleItems();
+            foreach (ILuckyWheelItemData possibleItem in currentSpinPossibleItems)
             {
                 ObjectWithProbability<string> itemWithProbability =
                     new ObjectWithProbability<string>(possibleItem.ItemID, possibleItem.Probability);

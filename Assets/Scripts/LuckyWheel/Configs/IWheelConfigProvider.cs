@@ -4,8 +4,8 @@
     {
         public LuckyWheelSpinData GetLuckyWheelSpinData();
 
-        public LuckyWheelItemData[] GetPossibleConsumableItems();
-        public LuckyWheelItemData[] GetPossibleNonConsumableItems();
+        public ILuckyWheelItemData[] GetPossibleConsumableItems();
+        public ILuckyWheelItemData[] GetPossibleNonConsumableItems();
         public PredefinedLuckyWheelConfig[] GetPredefinedLuckyWheelConfigs();
     }
 }

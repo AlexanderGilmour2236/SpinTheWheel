@@ -8,7 +8,7 @@ namespace SpinTheWheelTest.ViewModel
     public interface ISpinTheWheelWindowViewModel
     {
         event Action WheelItemsChange;
-        List<LuckyWheelItemData> GetCurrentLuckyWheelsItems();
+        List<ILuckyWheelItemData> GetCurrentLuckyWheelsItems();
         void TrySpin();
     }
 }

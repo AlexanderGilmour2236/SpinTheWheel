@@ -36,12 +36,12 @@ namespace LuckyWheel.Configs
             };
         }
 
-        public LuckyWheelItemData[] GetPossibleConsumableItems()
+        public ILuckyWheelItemData[] GetPossibleConsumableItems()
         {
             return _basicWheelConfigProvider.GetPossibleConsumableItems();
         }
 
-        public LuckyWheelItemData[] GetPossibleNonConsumableItems()
+        public ILuckyWheelItemData[] GetPossibleNonConsumableItems()
         {
             return _basicWheelConfigProvider.GetPossibleNonConsumableItems().Where(item => !IsExcludedMethod(item.ItemID))
                 .ToArray();

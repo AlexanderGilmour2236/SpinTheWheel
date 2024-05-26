@@ -4,7 +4,7 @@ using UnityEngine;
 namespace LuckyWheel.Configs
 {
     [CreateAssetMenu(fileName = "LuckyWheelItemData", menuName = "Configs/LuckyWheelItemData")]
-    public class LuckyWheelItemData : ScriptableObject
+    public class LuckyWheelItemData : ScriptableObject, ILuckyWheelItemData
     {
         [field:SerializeField] public string ItemID { get; private set; }
         

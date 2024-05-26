@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ItemID>k__BackingField: coins_10
   <Probability>k__BackingField: 60
-  <ProbabilityOnWheel>k__BackingField: 1
+  <ProbabilityOnWheel>k__BackingField: 10
   <Consumable>k__BackingField: 1

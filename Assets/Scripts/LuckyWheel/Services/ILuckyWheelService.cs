@@ -8,7 +8,7 @@ namespace LuckyWheel.Services
     {
         event Action<string> ItemRewarded;
         void SetWheelConfigProvider(IWheelConfigProvider wheelConfigProvider);
-        List<LuckyWheelItemData> GetCurrentSpinPossibleItems();
+        List<ILuckyWheelItemData> GetCurrentSpinPossibleItems();
         void TrySpin();
         void SetCurrentSpinCount(int spinCount);
         public int CurrentSeed { get; }
